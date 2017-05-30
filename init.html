@@ -11,7 +11,7 @@
           type: method
         })
         .done(function(data) {
-          $('#result').html(data)
+          $('#result').html(data);
         })
         .always(function(xhr, status)  {
           $('#status').html(status);
@@ -28,7 +28,7 @@
     
     <input type="text" style="width:100%;" id="cmd"/>
     <button onclick="call('GET', $('#cmd').val());">OK</button>
-    <div id="status">
+    <div id="status" style="background:lightgray;">
     </div>
     
     <div>
