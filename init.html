@@ -3,6 +3,21 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
+      var BASE = "https://api.github.com/repos/phasianus/tribewiki";
+      
+      function call(method, action) {
+        $.ajax({
+          url: BASE + "/" + action,
+          type: method
+        })
+        .done(function(data) {
+          $('#result').html(data)
+        })
+        .always(function(xhr, status)  {
+          $('#status').html(status);
+        })
+      };
+      
       
     </script>
   </head>
@@ -12,10 +27,13 @@
     
     
     <input type="text" style="width:100%;" id="cmd"/>
-    <button onclick="$('#result').html($('#cmd').val());">OK</button>
+    <button onclick="call('GET', $('#cmd').val());">OK</button>
+    <div id="status">
+    </div>
     
-    <div id="result">
-      
+    <div>
+      <pre id="result">
+      </pre>
     </div>
     
   </body>
